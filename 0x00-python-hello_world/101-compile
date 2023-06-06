@@ -1,0 +1,19 @@
+#!/bin/bash
+
+py_file="$PYFILE"
+
+
+output_file="${py_file}c"
+
+# Use the compileall module to compile the Python script
+python3 -m compileall "$py_file"
+
+# Get the name of the compiled file
+compiled_file=$(python3 -c "import py_compile; print(py_compile.compile('$py_file'))")
+
+# Move the compiled bytecode file to the output file name
+mv "$compiled_file" "$output_file"
+
+# Cleanup the "__pycache__" directory
+rm -rf "__pycache__"
+
