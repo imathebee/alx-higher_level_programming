@@ -8,9 +8,11 @@ class Square:
 
     def __init__(self, size=0, position=(0, 0)):
         """Initialize a new Square.
+
         Args:
             size (int): The size of the new square. Defaults to 0.
             position (tuple): The position of the square. Defaults to (0, 0).
+
         Raises:
             TypeError: If size is not an integer or position is not a tuple of 2 positive integers.
             ValueError: If size is less than 0 or position contains negative integers.
@@ -21,6 +23,7 @@ class Square:
     @property
     def size(self):
         """Retrieve the size of the square.
+
         Returns:
             int: The size of the square.
         """
@@ -29,8 +32,10 @@ class Square:
     @size.setter
     def size(self, value):
         """Set the size of the square.
+
         Args:
             value (int): The new size of the square.
+
         Raises:
             TypeError: If value is not an integer.
             ValueError: If value is less than 0.
@@ -45,6 +50,7 @@ class Square:
     @property
     def position(self):
         """Retrieve the position of the square.
+
         Returns:
             tuple: The position of the square.
         """
@@ -53,8 +59,10 @@ class Square:
     @position.setter
     def position(self, value):
         """Set the position of the square.
+
         Args:
             value (tuple): The new position of the square.
+
         Raises:
             TypeError: If value is not a tuple of 2 positive integers.
             ValueError: If value contains negative integers.
@@ -66,6 +74,7 @@ class Square:
 
     def area(self):
         """Calculate and return the area of the square.
+
         Returns:
             int: The area of the square.
         """
