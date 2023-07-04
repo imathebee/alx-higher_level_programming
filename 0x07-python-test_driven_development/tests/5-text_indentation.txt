@@ -1,0 +1,64 @@
+import unittest
+from io import StringIO
+from text_indentation import text_indentation
+
+class TextIndentationTestCase(unittest.TestCase):
+    def test_text_indentation(self):
+        input_text = """Lorem ipsum dolor sit amet, consectetur adipiscing elit. \
+Quonam modo? Utrum igitur tibi litteram videor an totas paginas commovere? \
+Non autem hoc: igitur ne illud quidem. Fortasse id optimum, sed ubi illud: \
+Plus semper voluptatis? Teneo, inquit, finem illi videri nihil dolere. \
+Transfer idem ad modestiam vel temperantiam, quae est moderatio cupiditatum \
+rationi oboediens. Si id dicis, vicimus. Inde sermone vario sex illa a Dipylo \
+stadia confecimus. Sin aliud quid voles, postea. Quae animi affectio suum \
+cuique tribuens atque hanc, quam dico. Utinam quidem dicerent alium alio \
+beatiorem! Iam ruinas videres"""
+
+        expected_output = """Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+\n
+Quonam modo?
+\n
+Utrum igitur tibi litteram videor an totas paginas commovere?
+\n
+Non autem hoc:
+\n
+igitur ne illud quidem.
+\n
+Fortasse id optimum, sed ubi illud:
+\n
+Plus semper voluptatis?
+\n
+Teneo, inquit, finem illi videri nihil dolere.
+\n
+Transfer idem ad modestiam vel temperantiam, quae est moderatio cupiditatum rationi oboediens.
+\n
+Si id dicis, vicimus.
+\n
+Inde sermone vario sex illa a Dipylo stadia confecimus.
+\n
+Sin aliud quid voles, postea.
+\n
+Quae animi affectio suum cuique tribuens atque hanc, quam dico.
+\n
+Utinam quidem dicerent alium alio beatiorem! Iam ruinas videres"""
+
+        # Redirect the standard output to a StringIO object
+        # to capture the printed output
+        captured_output = StringIO()
+        import sys
+        sys.stdout = captured_output
+
+        # Call the function with the input text
+        text_indentation(input_text)
+
+        # Reset the standard output
+        sys.stdout = sys.__stdout__
+
+        # Get the printed output from the StringIO object
+        actual_output = captured_output.getvalue()
+
+        # Assert that the actual output matches the expected output
+        self.assertEqual(actual_output, expected_output)
+
+if __name__ == '__main__':
+    unittest.main()
