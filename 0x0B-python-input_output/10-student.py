@@ -15,17 +15,18 @@ class Student:
         """
         Converts the object to a JSON serializable dictionary.
         If `attrs` is None,
-        returns a dictionary representation of the
+        returns a dictionary repr- of the
         entire object's attributes.
         Otherwise, returns a dictionary
-        representation of only the specified `attrs`.
+        repr- of only the specified `attrs`.
         :param attrs: A list of attribute names to include in the dictionary.
         Defaults to None.
         :type attrs: Optional[List[str]]
         :return: A dictionary representation of the object.
         :rtype: Dict[str, Any]
         """
-        if attrs is None:
+        if attrs is None or not isinstance(attrs, list):
             return self.__dict__
         else:
-            return {attr: getattr(self, attr) for attr in attrs if hasattr(self, attr)}
+            return {attr: getattr(self, attr, None)
+                    for attr in attrs if isinstance(attr, str)}
