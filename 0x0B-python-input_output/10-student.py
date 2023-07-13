@@ -25,8 +25,7 @@ class Student:
         :return: A dictionary representation of the object.
         :rtype: Dict[str, Any]
         """
-        if attrs is None or not isinstance(attrs, list):
+        if attrs is None:
             return self.__dict__
         else:
-            return {attr: getattr(self, attr, None)
-                    for attr in attrs if isinstance(attr, str)}
+            return {attr: getattr(self, attr, None) for attr in attrs if hasattr(self, attr)}
